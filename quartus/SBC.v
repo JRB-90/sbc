@@ -74,20 +74,20 @@ wire				uart_clk_1M832;
 wire 				cpuclk_Locked;
 wire 				uartclk_Locked;
 
-wire				acia1_rx;
-wire				acia1_tx;
-wire				acia1_cts_n;
-wire				acia1_rts_n;
+wire				acia_rx;
+wire				acia_tx;
+wire				acia_cts_n;
+wire				acia_rts_n;
 
 //=======================================================
 //  Structural coding
 //=======================================================
 
 assign res_n = KEY[0] && (cpuclk_Locked && uartclk_Locked) ? 1 : 0;
-assign acia1_cts_n = GPIO[6];
-assign GPIO[7] = acia1_rts_n;
-assign acia1_rx = GPIO[8];
-assign GPIO[9] = acia1_tx;
+assign acia_cts_n = GPIO[6];
+assign GPIO[7] = acia_rts_n;
+assign acia_rx = GPIO[8];
+assign GPIO[9] = acia_tx;
 
 sys_clk sysclk(
 	.inclk0(MAX10_CLK1_50),
@@ -113,12 +113,12 @@ sbc_system sbc(
 	.uart_clk(uart_clk_1M832),
 	.res_n(res_n),
 	
-	.acia1_rx(acia1_rx),
-	.acia1_tx(acia1_tx),
-	.acia1_cts_n(acia1_cts_n),
-	.acia1_rts_n(acia1_rts_n),
-	.acia1_dcd_n(0),
-	.acia1_dsr_n(0),
+	.acia_rx(acia_rx),
+	.acia_tx(acia_tx),
+	.acia_cts_n(acia_cts_n),
+	.acia_rts_n(acia_rts_n),
+	.acia_dcd_n(0),
+	.acia_dsr_n(0),
 );
 
 endmodule
