@@ -14,7 +14,7 @@ NMI_vec     = IRQ_vec+$0A     ; NMI code vector
 
 ; setup for the 6502 simulator environment
 
-IO_AREA     = $8800           ; set I/O area for this monitor
+IO_AREA     = $8000           ; set I/O area for this monitor
 
 ACIAdata    = IO_AREA         ; simulated ACIA write port
 ACIAstatus  = IO_AREA+1
