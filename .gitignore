@@ -3,6 +3,8 @@
 *.exe
 *.bak
 
+*.vvp
+
 *.rpt
 *.done
 *.smsg
@@ -17,6 +19,9 @@
 *.qsf
 *.sld
 *.qws
+*.qip
+*.ppf
 
 /quartus/db
 /quartus/incremental_db
+/quartus/greybox_tmp
