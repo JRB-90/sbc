@@ -98,7 +98,7 @@ sys_clk sysclk(
 	.c1(PHI2_1M),
 	.c2(PHI1_1M)
 );
-
+ 
 uart_clk uartclk(
 	.inclk0(MAX10_CLK1_50),
 	.areset(~KEY[0]),

@@ -21,6 +21,7 @@
 *.qws
 *.qip
 *.ppf
+*.stp
 
 /quartus/db
 /quartus/incremental_db

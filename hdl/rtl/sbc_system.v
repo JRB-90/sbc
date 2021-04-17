@@ -28,6 +28,7 @@ module sbc_system (
 );
 
 // Wire/Reg declarations
+
 wire				rw_n;
 wire                irq_n;
 wire                acia_irq_n;
@@ -45,6 +46,20 @@ wire				io_sel_n;
 wire                rom_rd_en;
 wire                ram_rd_en;
 wire                ram_wr_en;
+
+// Combination logic
+
+assign rom_sel_n = ~(cpu_addr_out[15] && cpu_addr_out[14]);
+assign ram_sel_n = cpu_addr_out[15];
+assign io_sel_n = ~(rom_sel_n && ram_sel_n);
+
+assign rom_rd_en = ~rom_sel_n && rw_n ? 1 : 0;
+assign ram_rd_en = ~ram_sel_n && rw_n ? 1 : 0;
+assign ram_wr_en = ~ram_sel_n && ~rw_n ? 1 : 0;
+
+assign irq_n = acia_irq_n;
+
+assign cpu_data_in = rom_sel_n ? (ram_sel_n ? acia_data_out : ram_data_out) : rom_data_out;
 
 // Structural code
 
