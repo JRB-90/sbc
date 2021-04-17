@@ -15,6 +15,14 @@ IF %ERRORLEVEL% NEQ 0 (
 
 ECHO Compile and linking OK
 
+path ..\..\tools\SBCTools\BinToMif\bin\Release
+BinToMif.exe min.bin monmin.mif
+IF %ERRORLEVEL% NEQ 0 (
+  ECHO Failed to convert binary
+  EXIT ERROR
+)
 
+%systemroot%\System32\xcopy /y monmin.mif ..\..\hdl\rtl\monmin.mif
+ECHO Copied memory init file to project
 
 ECHO Built successfully
